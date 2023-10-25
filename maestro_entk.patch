@@ -1,0 +1,37 @@
+diff --git a/maestrowf/maestro.py b/maestrowf/maestro.py
+index 40818dc..762c947 100644
+--- a/maestrowf/maestro.py
++++ b/maestrowf/maestro.py
+@@ -320,6 +320,18 @@ def run_study(args):
+     # Copy the spec to the output directory
+     shutil.copy(args.specification, study.output_path)
+ 
++
++    if args.entk:
++        args.autono = True
++        import pprint
++        from .backend_entk import Converter
++
++        my_path, my_dag = study.stage()
++        my_dag.set_adapter(batch)
++
++        conv = Converter(my_dag)
++        conv.process()
++
+     # Use the Conductor's classmethod to store the study.
+     Conductor.store_study(study)
+     Conductor.store_batch(study.output_path, batch)
+@@ -422,6 +434,13 @@ def setup_argparser():
+                      "studies (NOTE: breaks commands that use parameter labels"
+                      " to search directories). [Default: %(default)s]")
+ 
++
++    # This is an arg for Maestro + Radical integration
++    run.add_argument("--entk", action="store_true", default=False,
++                     help="Will run Maestro far enough to get DAG "
++                     "then external python script uses the data to "
++                     "create a json file with info need for Radical")
++
+     prompt_opts = run.add_mutually_exclusive_group()
+     prompt_opts.add_argument(
+         "-n", "--autono", action="store_true", default=False,
