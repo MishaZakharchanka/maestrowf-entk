@@ -1,6 +1,8 @@
 import json
+from typing import List
 from collections import deque
 import radical.entk as re
+import radical.pilot as rp
 
 class Converter:
 
@@ -30,6 +32,7 @@ class Converter:
                 queue.append((node, level + 1))
 
         return return_thingy, level
+
 
     def process(self):
         stage, highest_stage = self.bfs("_source")
@@ -137,3 +140,22 @@ class Converter:
 
         appman.workflow = [my_pipeline]
         appman.run()
+
+
+def get_platform_ids(hostname:str) -> List[str]:
+
+        platform_cfgs = rp.utils.get_resource_configs()
+        facilities = list(platform_cfgs)
+        for skip_facility in ['debug', 'local']:
+            facilities.remove(skip_facility)
+
+        output = []
+        for facility in facilities:
+            for platform in platform_cfgs[facility]:
+                if platform.split('_')[0] in hostname:
+                    output.append('%s.%s' % (facility, platform))
+            if output:
+                output.sort()
+                break
+
+        return output
