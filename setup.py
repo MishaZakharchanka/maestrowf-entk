@@ -11,3 +11,11 @@ setup(
         'radical.entk',
 	],
 )
+
+
+import maestrowf
+from subprocess import PIPE, Popen
+maestro_pth = maestrowf.__path__[0]
+cmd = f"patch {maestro_pth}/maestro.py maestro_entk_plugin/maestro_entk.patch"
+p = Popen(cmd.split(), stdout=PIPE, stderr=PIPE)
+p.communicate()
