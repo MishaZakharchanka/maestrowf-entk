@@ -19,3 +19,7 @@ maestro_pth = maestrowf.__path__[0]
 cmd = f"patch {maestro_pth}/maestro.py maestro_entk_plugin/maestro_entk.patch"
 p = Popen(cmd.split(), stdout=PIPE, stderr=PIPE)
 p.communicate()
+
+
+import shutil
+shutil.copy('maestro_entk_plugin/backend_entk.py', maestro_pth)
