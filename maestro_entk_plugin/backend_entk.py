@@ -127,12 +127,18 @@ class Converter:
 
                 radical_stages[-1].add_tasks(task)
 
+        radical_resource = 'local.localhost_test'
+        if self._workflow['resource']['host'] is not 'local':
+            if get_platform_ids(self._workflow['resource']['host']) is not []:
+                radical_resource = get_platform_ids(self._workflow['resource']['host'])
+        print(f"This is the host that we are trying to run on: {radical_resource}")
+
         my_pipeline = re.Pipeline()
         my_pipeline.add_stages(radical_stages)
 
         appman = re.AppManager()
         appman.resource_desc = {
-            'resource' : 'local.localhost_test',
+            'resource' : radical_resource,
             'walltime' : total_walltime,
             'cpus' : max_cores_per_stage,
             'gpus' : max_gpus_per_stage
@@ -144,18 +150,16 @@ class Converter:
 
 def get_platform_ids(hostname:str) -> List[str]:
 
-        platform_cfgs = rp.utils.get_resource_configs()
-        facilities = list(platform_cfgs)
-        for skip_facility in ['debug', 'local']:
-            facilities.remove(skip_facility)
-
-        output = []
-        for facility in facilities:
-            for platform in platform_cfgs[facility]:
-                if platform.split('_')[0] in hostname:
-                    output.append('%s.%s' % (facility, platform))
-            if output:
-                output.sort()
-                break
-
-        return output
+    platform_cfgs = rp.utils.get_resource_configs()
+    facilities = list(platform_cfgs)
+    for skip_facility in ['debug', 'local']:
+        facilities.remove(skip_facility)
+    output = []
+    for facility in facilities:
+        for platform in platform_cfgs[facility]:
+            if platform.split('_')[0] in hostname:
+                output.append('%s.%s' % (facility, platform))
+        if output:
+            output.sort()
+            break
+    return output
