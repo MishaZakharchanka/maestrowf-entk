@@ -127,6 +127,7 @@ class Converter:
 
                 radical_stages[-1].add_tasks(task)
 
+        print(f"This is what the resource host is from Maestro: {self._workflow['resource']['host']}")
         radical_resource = 'local.localhost_test'
         if self._workflow['resource']['host'] is not 'local':
             if get_platform_ids(self._workflow['resource']['host']) is not []:
