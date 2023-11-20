@@ -127,19 +127,15 @@ class Converter:
 
                 radical_stages[-1].add_tasks(task)
 
-        print(f"This is what the resource host is from Maestro: {self._workflow['resource']['host']}")
-        radical_resource = 'local.localhost_test'
-        if self._workflow['resource']['host'] is not 'local':
-            if get_platform_ids(self._workflow['resource']['host']) is not []:
-                radical_resource = get_platform_ids(self._workflow['resource']['host'])
-        print(f"This is the host that we are trying to run on: {radical_resource}")
+        platform_ids = get_platform_ids(self._workflow['resource']['host'])
+        radical_resource = 'local.localhost_test' if not platform_ids else platform_ids[0]
 
         my_pipeline = re.Pipeline()
         my_pipeline.add_stages(radical_stages)
 
         appman = re.AppManager()
         appman.resource_desc = {
-            'resource' : radical_resource,
+            'resource' : radical_resource[0],
             'walltime' : total_walltime,
             'cpus' : max_cores_per_stage,
             'gpus' : max_gpus_per_stage
