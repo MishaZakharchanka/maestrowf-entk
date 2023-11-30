@@ -13,19 +13,32 @@ class PostInstallCommand(install):
 		# import os
 		# maestro_pth = os.path.abspath(maestrowf.__file__)
 		# print(f"This is maestros path with the new way to find it: {maestro_pth}")
-		cmd = f"patch {maestro_pth}/maestro.py maestro_entk_plugin/maestro_entk.patch"
+		cmd = f"patch {maestro_pth}/maestro.py maestro-entk/maestro_entk.patch"
 		p = Popen(cmd.split(), stdout=PIPE, stderr=PIPE)
 		p.communicate()
 
 
 		import shutil
-		shutil.copy('maestro_entk_plugin/backend_entk.py', maestro_pth)
+		shutil.copy('maestro-entk/backend_entk.py', maestro_pth)
 
 setup(
-	name='maestro_entk_plugin',
+	name='maestro-entk',
 	version='0.1',
 	description='A plugin for Maestro to allow scheduling using entk',
-	packages=['maestro_entk_plugin'],
+	author=[
+		'Mikhail Zakharchanka'
+		'Mikhail Titov'
+	],
+	author_email='zakharchanka1@llnl.gov',
+	license='MIT',
+	python_requires='>=3.6',
+	classifiers=[
+		'Intended Audience :: Developers',
+		'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.6',
+	],
+	packages=['maestro-entk'],
 	include_package_data=True,
 	install_requires=[
 		'maestrowf',
