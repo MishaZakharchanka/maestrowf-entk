@@ -7,7 +7,7 @@ index 40818dc..762c947 100644
      shutil.copy(args.specification, study.output_path)
  
 +
-+    if args.entk:
++    if args.entk or args.entk_store_workflow:
 +        args.autono = True
 +        import pprint
 +        from .backend_entk import Converter
@@ -16,7 +16,7 @@ index 40818dc..762c947 100644
 +        my_dag.set_adapter(batch)
 +
 +        conv = Converter(my_dag)
-+        conv.process()
++        conv.process(args.entk_store_workflow)
 +
      # Use the Conductor's classmethod to store the study.
      Conductor.store_study(study)
@@ -29,8 +29,13 @@ index 40818dc..762c947 100644
 +    # This is an arg for Maestro + Radical integration
 +    run.add_argument("--entk", action="store_true", default=False,
 +                     help="Will run Maestro far enough to get DAG "
-+                     "then external python script uses the data to "
-+                     "create a json file with info need for Radical")
++                     "then an external python script passes the data "
++                     "to Radical to launch the jobs")
++
++    run.add_argument("--entk_store_workflow", action="store_true", default=False,
++                     help="Does the same thing as the entk option and "
++                     "additionally creates a json file with the information "
++                     "that will be passed to Radical.")
 +
      prompt_opts = run.add_mutually_exclusive_group()
      prompt_opts.add_argument(

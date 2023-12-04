@@ -34,7 +34,7 @@ class Converter:
         return return_thingy, level
 
 
-    def process(self):
+    def process(self, store:bool):
         stage, highest_stage = self.bfs("_source")
 
         # Create dict for stages before populating
@@ -105,9 +105,10 @@ class Converter:
 
         self._workflow['resource'].update(resource)
 
-        # add an option/variable to save this, off by default
-        with open('workflow.json', 'w') as fp:
-            json.dump(self._workflow, fp, indent=2)
+        # If the entk option that includes store is used, then dump data
+        if store:
+            with open('workflow.json', 'w') as fp:
+                json.dump(self._workflow, fp, indent=2)
 
         radical_stages = []
 
