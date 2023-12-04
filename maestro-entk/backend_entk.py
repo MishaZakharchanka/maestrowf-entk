@@ -135,7 +135,7 @@ class Converter:
 
         appman = re.AppManager()
         appman.resource_desc = {
-            'resource' : radical_resource[0],
+            'resource' : radical_resource,
             'walltime' : total_walltime,
             'cpus' : max_cores_per_stage,
             'gpus' : max_gpus_per_stage
