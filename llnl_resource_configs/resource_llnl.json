@@ -16,7 +16,7 @@
                                          "order" : ["SRUN"],
                                          "SRUN" : {}
                                         },
-        "pre_bootstrap_0"             : ["module load srun python/3.9.12"],
+        "pre_bootstrap_0"             : ["module load python/3.9.12"],
         "default_remote_workdir"      : "$HOME",
         "virtenv_mode"                : "local",
         "cores_per_node"              : 36
