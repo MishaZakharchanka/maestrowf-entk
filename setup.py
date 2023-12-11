@@ -17,7 +17,7 @@ class PostInstallCommand(install):
 		p.communicate()
 
 		import shutil
-		shutil.copy('maestro-entk/backend_entk.py', maestro_pth)
+		shutil.copy('maestrowf-entk/backend_entk.py', maestro_pth)
 
 setup(
 	name='maestrowf-entk',
@@ -36,7 +36,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
 	],
-	packages=['maestro-entk'],
+	packages=['maestrowf-entk'],
 	include_package_data=True,
 	install_requires=[
 		'maestrowf',
