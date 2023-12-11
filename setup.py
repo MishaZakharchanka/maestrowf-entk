@@ -1,6 +1,6 @@
 import os
 
-from setuptools import setup
+from setuptools import setup, find_packages
 from setuptools.command.install import install
 
 
@@ -42,6 +42,8 @@ setup(
         'Programming Language :: Python :: 3.6',
 	],
 	packages=['maestrowf-entk'],
+	packages=find_packages(where="src"),
+    package_dir={"": "src"},
 	include_package_data=True,
 	install_requires=[
 		'maestrowf',
