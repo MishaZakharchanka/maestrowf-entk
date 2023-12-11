@@ -1,5 +1,8 @@
+import os
+
 from setuptools import setup
 from setuptools.command.install import install
+
 
 class PostInstallCommand(install):
 	"""Post-installation for installation mode."""
@@ -12,9 +15,11 @@ class PostInstallCommand(install):
 		# import os
 		# maestro_pth = os.path.abspath(maestrowf.__file__)
 		# print(f"This is maestros path with the new way to find it: {maestro_pth}")
-		cmd = f"patch {maestro_pth}/maestro.py maestrowf-entk/maestro_entk.patch"
-		p = Popen(cmd.split(), stdout=PIPE, stderr=PIPE)
-		p.communicate()
+		# cmd = f"patch {maestro_pth}/maestro.py maestrowf-entk/maestro_entk.patch"
+		# p = Popen(cmd.split(), stdout=PIPE, stderr=PIPE)
+		# p.communicate()
+
+		os.system(f'patch {maestro_pth}/maestro.py maestrowf-entk/maestro_entk.patch')
 
 		import shutil
 		shutil.copy('maestrowf-entk/backend_entk.py', maestro_pth)
