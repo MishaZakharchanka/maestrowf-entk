@@ -41,7 +41,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
 	],
-	packages=['maestrowf-entk'],
+	# packages=['maestrowf-entk'],
 	packages=find_packages(where="src"),
     package_dir={"": "src"},
 	include_package_data=True,
