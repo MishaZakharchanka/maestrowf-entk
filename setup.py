@@ -19,13 +19,13 @@ class PostInstallCommand(install):
 		# p = Popen(cmd.split(), stdout=PIPE, stderr=PIPE)
 		# p.communicate()
 
-		os.system(f'patch {maestro_pth}/maestro.py maestrowf-entk/maestro_entk.patch')
+		os.system(f'patch {maestro_pth}/maestro.py src/maestrowf_entk/maestrowf_entk.patch')
 
 		import shutil
-		shutil.copy('maestrowf-entk/backend_entk.py', maestro_pth)
+		shutil.copy('src/maestrowf_entk/backend_entk.py', maestro_pth)
 
 setup(
-	name='maestrowf-entk',
+	name='maestrowf_entk',
 	version='0.1',
 	description='A plugin for Maestro to allow scheduling using entk',
 	author=[
