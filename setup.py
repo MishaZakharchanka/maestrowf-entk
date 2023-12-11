@@ -5,7 +5,6 @@ class PostInstallCommand(install):
 	"""Post-installation for installation mode."""
 	def run(self):
 		install.run(self)
-		# PUT YOUR POST-INSTALL SCRIPT HERE or CALL A FUNCTION
 		import maestrowf
 		from subprocess import PIPE, Popen
 		maestro_pth = maestrowf.__path__[0]
@@ -17,12 +16,11 @@ class PostInstallCommand(install):
 		p = Popen(cmd.split(), stdout=PIPE, stderr=PIPE)
 		p.communicate()
 
-
 		import shutil
 		shutil.copy('maestro-entk/backend_entk.py', maestro_pth)
 
 setup(
-	name='maestro-entk',
+	name='maestrowf-entk',
 	version='0.1',
 	description='A plugin for Maestro to allow scheduling using entk',
 	author=[
