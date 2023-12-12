@@ -19,7 +19,7 @@ class PostInstallCommand(install):
 		# p = Popen(cmd.split(), stdout=PIPE, stderr=PIPE)
 		# p.communicate()
 
-		os.system(f'patch {maestro_pth}/maestro.py src/maestrowf_entk/maestrowf_entk.patch')
+		os.system(f'patch {maestro_pth}/maestro.py maestrowf_entk/maestrowf_entk.patch')
 
 		import shutil
 		shutil.copy('src/maestrowf_entk/backend_entk.py', maestro_pth)
