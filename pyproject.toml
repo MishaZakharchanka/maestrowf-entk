@@ -1,0 +1,28 @@
+[project]
+name = "maestrowf_entk"
+version = "0.1"
+description = "A plugin for Maestro to allow scheduling using entk"
+license = {file = "LICENSE.md"}
+classifiers = [
+    "Intended Audience :: Developers",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6"
+]
+authors = [
+    {name = "Mikhail Zakharchanka", email = "zakharchanka1@llnl.gov"},
+    {name = "Mikhail Titov", email = "mtitov@bnl.gov"}
+]
+dependencies = [
+    "maestrowf",
+    "radical.entk"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+include-package-data = true
+
+[project.scripts]
+install-plugin = "maestrowf_entk:install_plugin"
