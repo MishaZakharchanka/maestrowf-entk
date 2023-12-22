@@ -8,14 +8,14 @@ You will need to have python downloaded or if running at LLNL on LC you will nee
 Next we will create and enter a virtual enviornment:
 
 ``` bash
-    python3 -m venv maestrowf_entk
-    source maestrowf_entk/bin/activate
+    python3 -m venv {venv_name}
+    source {venv_name}/bin/activate
 ```
 
 Update tools that we will be using to install the package:
 
 ``` bash
-    pip install -U pip setuptools wheels
+    pip install -U pip setuptools wheel
 ```
 
 Install the package itself and then run a script that was installed to apply the plugin to our copy of maestro This does not change any default behavior of Maestrowf and there will be some output after running the `install-plugin` scipt saying that the patch has succeeded.
@@ -26,7 +26,7 @@ Install the package itself and then run a script that was installed to apply the
 ```
 
 ### Running your first study
-Now that the installation is complete you are ready to run your first study. If you have existing Maestrowf yaml files you can try to use one of those, otherwise there are a couple examples in the `input_examples` directory.
+Now that the installation is complete you are ready to run your first study. If you have existing Maestrowf yaml files you can try to use one of those, otherwise there are a couple examples in the `input_examples` directory (this directory is not installed so, the repository will need to be cloned to use it).
 
 There are two different options you can use to launch the Radical entk backend when invoking Maestro:
 `--entk` or `--entk_store_workflow`
