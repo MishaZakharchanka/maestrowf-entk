@@ -1,18 +1,18 @@
 ## Getting Started
 ### Installation
-You will need to have python downloaded or if running at LLNL on LC you will need to load the newest/newer version of python avalible on the host you are using.
+You will need to have python downloaded or if running at LLNL on LC you will need to load the newest/newer version of python avalible on the host you are using: (Note this is LC specific)
 
 ``` bash
     module load python/3.9.12
 ```
-Next we will create and enter a virtual enviornment.
+Next we will create and enter a virtual enviornment:
 
 ``` bash
     python3 -m venv maestrowf_entk
     source maestrowf_entk/bin/activate
 ```
 
-Update tools that we will be using to install the package.
+Update tools that we will be using to install the package:
 
 ``` bash
     pip install -U pip setuptools wheels
@@ -32,7 +32,7 @@ There are two different options you can use to launch the Radical entk backend w
 `--entk` or `--entk_store_workflow`
 The first will run your study and the latter will do the same but additionally output a JSON file with the information that is being passed from Meastro to Radical.
 
-Running an example from the repository
+Running an example from the repository:
 
 ``` bash
     maestro run --entk maestrowf-entk/input_examples/local_study.yaml
