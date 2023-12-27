@@ -120,7 +120,7 @@ class Converter:
                 task = re.Task()
                 task.executable = exec_string
                 if self._workflow['tasks'][i][x]['cores']:
-                    task.cpu_reqs = {'cpu_threads' : self._workflow['tasks'][i][x]['cores']} # this should be threads
+                    task.cpu_reqs = {'cpu_threads' : self._workflow['tasks'][i][x]['cores']}
                 if self._workflow['tasks'][i][x]['gpus']:
                     task.gpu_reqs = {'gpu_processes' : self._workflow['tasks'][i][x]['gpus']}
                 # Will need to add per test walltime (timeout) when Mikhail adds it to entk
