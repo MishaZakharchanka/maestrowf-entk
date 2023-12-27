@@ -10,7 +10,6 @@ class Converter:
 
     max_cores = 0
     max_gpus = 0
-    # total_walltime = 0
 
     def __init__(self, exec_graph):
         self._dag = exec_graph
