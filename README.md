@@ -43,11 +43,11 @@ Running an example from the repository:
 Radical's input or configuration file, which is used to tell Radical what jobs to run, has to be written in python. Maestrowf is also used to make scheduling many jobs with different parameters easier, but it uses yaml as the input. The hope was to be able to allow Radical users to create Maestro style yaml input that would then execute the jobs through Radical. Maybe yaml is easier to write and maintain, than python, for people who are not software engineers.
 
 ### Current status
-As of now this plugin is not working, it gets hung up somewhere within Radical's Saga. This was initially thought to be an issue with the shell that I was using while developing: zsh. Upon further testing it seems that this issue persists even when run using bash. The code was able to run locally at some point, but that stopped working so it is possible that a bug was introduced in the plugin at some point and not found.
+As of now this plugin is not working, it gets hung up somewhere within Radical Saga. This was initially thought to be an issue with the shell that I was using while developing, zsh, but it seems that this issue persists even when using bash. The code was able to run locally at some point, but that stopped working so, it is possible that a bug was introduced in the plugin at some point when expanding the code to be able to run on remote hosts.
 
 ### Repository Contents
 #### input_examples
-This directory contains two very similar examples, that were built on Maestro's example. One is run locally and does not launch batched jobs, the other is set up to run on Lassen and will schedule the jobs to run on the working nodes.
+This directory contains two very similar examples, that were built on Maestro's "Hello World" like example. One is run locally and does not launch batched jobs, the other is set up to run on Lassen, a host at LLNL, and will schedule the jobs to run on the working nodes.
 
 #### llnl_resource_configs
 This is a resource configuration file for Radical to be able to run on the Quartz host at LLNL. The file contained in this directory should be placed into `$HOME/.radical/pilot/configs/` so that Radical can find it. Additional hosts can be added to the dictionary, here is some Radical documentation that could help setting up more hosts:
