@@ -37,3 +37,22 @@ Running an example from the repository:
 ``` bash
     maestro run --entk maestrowf-entk/input_examples/local_study.yaml
 ```
+
+## Additional Notes
+### Idea behind eploring this integration
+Radical's input or configuration file, which is used to tell Radical what jobs to run, has to be written in python. Maestrowf is also used to make scheduling many jobs with different parameters easier, but it uses yaml as the input. The hope was to be able to allow Radical users to create Maestro style yaml input that would then execute the jobs through Radical. Maybe yaml is easier to write and maintain, than python, for people who are not software engineers.
+
+### Current status
+As of now this plugin is not working, it gets hung up somewhere within Radical's Saga. This was initially thought to be an issue with the shell that I was using while developing: zsh. Upon further testing it seems that this issue persists even when run using bash. The code was able to run locally at some point, but that stopped working so it is possible that a bug was introduced in the plugin at some point and not found.
+
+### Repository Contents
+#### input_examples
+This directory contains two very similar examples, that were built on Maestro's example. One is run locally and does not launch batched jobs, the other is set up to run on Lassen and will schedule the jobs to run on the working nodes.
+
+#### llnl_resource_configs
+This is a resource configuration file for Radical to be able to run on the Quartz host at LLNL. The file contained in this directory should be placed into `$HOME/.radical/pilot/configs/` so that Radical can find it. Additional hosts can be added to the dictionary, here is some Radical documentation that could help setting up more hosts:
+* https://radicalpilot.readthedocs.io/en/devel/tutorials/configuration.html#User-defined-configuration
+* https://radicalpilot.readthedocs.io/en/stable/tutorials/configuration.html#Customizing-a-predefined-configuration
+
+#### src
+This is the package directory that contains the script, `backend_entk.py`, which works as the interface between Maestro and Radical. There is also a patch file, `maestrowf_entk.patch`, for Maestro that is applied with the installed script, which is run at the end of the installation. Finally, `__init.py__` contains the script that is installed.
