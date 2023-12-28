@@ -21,7 +21,7 @@ Update tools that we will be using to install the package:
 Install the package itself and then run a script that was installed to apply the plugin to our copy of maestro This does not change any default behavior of Maestrowf and there will be some output after running the `install-plugin` scipt saying that the patch has succeeded.
 
 ``` bash
-    pip install git+https://github.com/MishaZakharchanka/maestrowf-entk
+    pip install git+https://github.com/MishaZakharchanka/maestrowf_entk
     install-plugin
 ```
 
