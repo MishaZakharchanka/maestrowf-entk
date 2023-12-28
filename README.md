@@ -58,6 +58,6 @@ This is a resource configuration file for Radical to be able to run on the Quart
 This is the package directory that contains the script, `backend_entk.py`, which works as the interface between Maestro and Radical. There is also a patch file, `maestrowf_entk.patch`, for Maestro that is applied with the installed script, which is run at the end of the installation. Finally, `__init.py__` contains the script that is installed.
 
 ### Final thoughts
-* `export RADICAL_LOG_LVL=DEBUG` is useful/nessesary for development, it will tell Radical to output logs you wouldn't see otherwise
+* `export RADICAL_LOG_LVL=DEBUG` is useful/nessesary for development, it will tell Radical to output logs you wouldn't see otherwise.
 * We where trying to get the script that you have to run at the end of the `pip install` to be a part of the install, so that the user would only have to invoke one line and everything is set up. This seemed to work with a previous `setup.py` we were using, but once we updated pip it broke and I was unable to find a new way to do this.
 * It might have been better to have this as a stand alone script, this would aleviate the install issues I mentioned above and could have been better for the longevity of the code as the patch file might have issues when Maestro is updated.
